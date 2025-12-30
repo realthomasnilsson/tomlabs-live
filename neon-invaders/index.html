@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Space Invaders</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div id="ui-layer">
+            <div id="score-board">SCORE: <span id="score">0</span></div>
+            <div id="lives-board">LIVES: <span id="lives">3</span></div>
+            <div id="start-screen" class="overlay active">
+                <h1>SPACE INVADERS</h1>
+                <p>PRESS <span class="blink">SPACE</span> TO START</p>
+                <p class="controls">ARROWS to Move &bull; SPACE to Shoot</p>
+            </div>
+            <div id="game-over-screen" class="overlay hidden">
+                <h1>GAME OVER</h1>
+                <p>FINAL SCORE: <span id="final-score">0</span></p>
+                <p>PRESS <span class="blink">SPACE</span> TO RESTART</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
