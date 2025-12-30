@@ -1,0 +1,119 @@
+:root {
+    --bg-color: #0d0d15;
+    --primary-color: #0f0;   /* Green */
+    --accent-color: #f00;    /* Red */
+    --secondary-color: #0ff; /* Cyan */
+    --text-color: #fff;
+    --font-family: 'Orbitron', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#game-container {
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    border: 2px solid #333;
+}
+
+canvas {
+    display: block;
+    background-color: #000;
+}
+
+#ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#score-board, #lives-board {
+    position: absolute;
+    top: 10px;
+    font-size: 20px;
+    text-shadow: 0 0 5px var(--text-color);
+}
+
+#score-board {
+    left: 20px;
+    color: var(--text-color);
+}
+
+#lives-board {
+    right: 20px;
+    color: var(--text-color);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: opacity 0.3s ease;
+}
+
+.overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+    text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color);
+}
+
+p {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.controls {
+    font-size: 16px;
+    color: #888;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.blink {
+    animation: blinker 1s linear infinite;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--primary-color);
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
