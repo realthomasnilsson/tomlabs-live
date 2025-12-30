@@ -1,1 +1,2 @@
-console.log("Welcome to Neo-Arcadia. System Online.");
+console.log("Welcome to TomLabs Games. System Online.");
+
