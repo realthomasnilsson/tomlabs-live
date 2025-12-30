@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Arcade Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Press+Start+2P&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="bg-grid"></div>
+
+    <header>
+        <h1>NEO-ARCADIA</h1>
+        <p class="subtitle">Enter the digital realm. Select your challenge.</p>
+    </header>
+
+    <main class="games-container">
+        <!-- Space Invaders Card -->
+        <a href="./space_invaders/index.html" class="game-card">
+            <div class="card-icon">👾</div>
+            <h2 class="card-title">SPACE INVADERS</h2>
+            <p class="card-desc">Defend Earth from the alien onslaught in this neon-infused classic.</p>
+        </a>
+
+        <!-- Snake Card -->
+        <a href="./snake/index.html" class="game-card" style="border-color: rgba(255, 0, 255, 0.3);">
+            <div class="card-icon">🐍</div>
+            <h2 class="card-title" style="color: var(--secondary-neon);">SNAKE</h2>
+            <p class="card-desc">Navigate the grid, consume energy, and grow. Don't hit the walls!</p>
+        </a>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Neo-Arcadia. Built for GitHub Pages.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
