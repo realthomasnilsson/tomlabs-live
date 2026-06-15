@@ -13,10 +13,10 @@
     const LEFT_EDGE = 8;
     const RIGHT_EDGE = 216;
     const STARTING_LIVES = 3;
-    const PLAYER_SPEED = 0.075;
-    const PLAYER_SHOT_SPEED = 0.22;
-    const ENEMY_SHOT_SPEED = 0.085;
-    const SAUCER_SPEED = 0.055;
+    const PLAYER_SPEED = 0.092;
+    const PLAYER_SHOT_SPEED = 0.28;
+    const ENEMY_SHOT_SPEED = 0.105;
+    const SAUCER_SPEED = 0.068;
     const STORAGE_KEY = "neonInvadersHighScore";
 
     const colors = {
@@ -579,16 +579,16 @@
 
         fleetInterval() {
             const remaining = this.aliveCount();
-            let interval = 760;
+            let interval = 620;
 
             if (remaining <= 1) interval = 52;
             else if (remaining <= 2) interval = 74;
             else if (remaining <= 5) interval = 112;
-            else if (remaining <= 10) interval = 180;
-            else if (remaining <= 16) interval = 280;
-            else if (remaining <= 24) interval = 390;
-            else if (remaining <= 34) interval = 510;
-            else if (remaining <= 44) interval = 630;
+            else if (remaining <= 10) interval = 160;
+            else if (remaining <= 16) interval = 240;
+            else if (remaining <= 24) interval = 330;
+            else if (remaining <= 34) interval = 430;
+            else if (remaining <= 44) interval = 530;
 
             return Math.max(42, interval - (this.wave - 1) * 24);
         }
