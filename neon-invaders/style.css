@@ -1,79 +1,103 @@
 :root {
-    --bg-color: #0d0d15;
-    --primary-color: #0f0;   /* Green */
-    --accent-color: #f00;    /* Red */
-    --secondary-color: #0ff; /* Cyan */
-    --text-color: #fff;
-    --font-family: 'Orbitron', sans-serif;
+    color-scheme: dark;
+    --cabinet: #08080d;
+    --glass: #020305;
+    --green: #39ff14;
+    --cyan: #00fff7;
+    --magenta: #ff2bd6;
+    --orange: #ff9f1c;
+    --red: #ff3131;
+    --white: #f6fff8;
+    --dim: rgba(246, 255, 248, 0.72);
+    --font: "Courier New", Courier, monospace;
 }
 
 * {
     box-sizing: border-box;
+}
+
+html,
+body {
+    min-width: 320px;
+    min-height: 100%;
     margin: 0;
-    padding: 0;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: var(--font-family);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
     overflow: hidden;
+    background:
+        radial-gradient(circle at center, rgba(0, 255, 247, 0.08), transparent 58%),
+        linear-gradient(180deg, #15151d 0%, #050508 64%, #000 100%);
+    color: var(--white);
+    font-family: var(--font);
 }
 
 #game-container {
     position: relative;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-    border: 2px solid #333;
+    width: min(92vw, calc(92vh * 0.875), 720px);
+    aspect-ratio: 224 / 256;
+    border: 10px solid #101018;
+    border-radius: 8px;
+    background: var(--glass);
+    box-shadow:
+        0 0 0 2px #2c2c37,
+        0 0 34px rgba(0, 255, 247, 0.28),
+        0 20px 70px rgba(0, 0, 0, 0.7);
+    isolation: isolate;
+}
+
+#game-container::before,
+#game-container::after {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    content: "";
+    pointer-events: none;
+}
+
+#game-container::before {
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.035) 50%, rgba(0, 0, 0, 0.12) 50%) 0 0 / 100% 4px,
+        radial-gradient(circle at center, transparent 58%, rgba(0, 0, 0, 0.25) 100%);
+    mix-blend-mode: screen;
+}
+
+#game-container::after {
+    border-radius: 2px;
+    box-shadow: inset 0 0 32px rgba(0, 255, 65, 0.12), inset 0 0 84px rgba(0, 0, 0, 0.72);
 }
 
 canvas {
     display: block;
-    background-color: #000;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
 }
 
 #ui-layer {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
+    z-index: 4;
     pointer-events: none;
-}
-
-#score-board, #lives-board {
-    position: absolute;
-    top: 10px;
-    font-size: 20px;
-    text-shadow: 0 0 5px var(--text-color);
-}
-
-#score-board {
-    left: 20px;
-    color: var(--text-color);
-}
-
-#lives-board {
-    right: 20px;
-    color: var(--text-color);
 }
 
 .overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    inset: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    gap: clamp(10px, 2.6vw, 18px);
+    padding: clamp(16px, 5vw, 34px);
+    background: rgba(0, 0, 0, 0.78);
     text-align: center;
-    transition: opacity 0.3s ease;
+    transition: opacity 180ms linear;
 }
 
 .overlay.hidden {
@@ -86,34 +110,109 @@ canvas {
     pointer-events: auto;
 }
 
+h1,
+p {
+    margin: 0;
+}
+
 h1 {
-    font-size: 60px;
-    margin-bottom: 20px;
-    color: var(--secondary-color);
-    text-shadow: 0 0 10px var(--secondary-color), 0 0 20px var(--secondary-color);
+    max-width: 10ch;
+    color: var(--white);
+    font-size: clamp(2rem, 9.6vw, 5rem);
+    font-weight: 700;
+    line-height: 0.88;
+    letter-spacing: 0;
+    text-shadow:
+        0 0 7px rgba(57, 255, 20, 0.86),
+        0 0 18px rgba(0, 255, 247, 0.48);
 }
 
 p {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: var(--text-color);
+    color: var(--dim);
+    font-size: clamp(0.95rem, 3.4vw, 1.7rem);
+    font-weight: 700;
 }
 
-.controls {
-    font-size: 16px;
-    color: #888;
-    margin-top: 20px;
-    text-transform: uppercase;
+.score-table {
+    display: grid;
+    gap: 7px;
+    width: min(76%, 330px);
+    color: var(--white);
+    font-size: clamp(0.7rem, 2.3vw, 1.08rem);
+    font-weight: 700;
+    text-align: left;
+}
+
+.score-table span {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+}
+
+.neon {
+    display: inline-block;
+    width: 26px;
+    height: 16px;
+    filter: drop-shadow(0 0 4px currentColor) drop-shadow(0 0 8px currentColor);
+}
+
+.neon.saucer {
+    color: var(--red);
+    background:
+        linear-gradient(currentColor 0 0) 5px 3px / 16px 2px no-repeat,
+        linear-gradient(currentColor 0 0) 2px 6px / 22px 4px no-repeat,
+        linear-gradient(currentColor 0 0) 7px 11px / 12px 2px no-repeat;
+}
+
+.neon.squid {
+    color: var(--magenta);
+    background:
+        linear-gradient(currentColor 0 0) 8px 1px / 10px 3px no-repeat,
+        linear-gradient(currentColor 0 0) 5px 5px / 16px 4px no-repeat,
+        linear-gradient(currentColor 0 0) 3px 10px / 5px 3px no-repeat,
+        linear-gradient(currentColor 0 0) 18px 10px / 5px 3px no-repeat;
+}
+
+.neon.crab {
+    color: var(--cyan);
+    background:
+        linear-gradient(currentColor 0 0) 4px 2px / 4px 3px no-repeat,
+        linear-gradient(currentColor 0 0) 18px 2px / 4px 3px no-repeat,
+        linear-gradient(currentColor 0 0) 3px 6px / 20px 5px no-repeat,
+        linear-gradient(currentColor 0 0) 0 12px / 5px 3px no-repeat,
+        linear-gradient(currentColor 0 0) 21px 12px / 5px 3px no-repeat;
+}
+
+.neon.octopus {
+    color: var(--orange);
+    background:
+        linear-gradient(currentColor 0 0) 3px 2px / 20px 4px no-repeat,
+        linear-gradient(currentColor 0 0) 0 7px / 26px 5px no-repeat,
+        linear-gradient(currentColor 0 0) 3px 13px / 6px 3px no-repeat,
+        linear-gradient(currentColor 0 0) 17px 13px / 6px 3px no-repeat;
 }
 
 .blink {
-    animation: blinker 1s linear infinite;
-    color: var(--primary-color);
-    text-shadow: 0 0 5px var(--primary-color);
+    color: var(--green);
+    text-shadow: 0 0 8px var(--green), 0 0 15px var(--green);
+    animation: blink 900ms steps(1, end) infinite;
 }
 
-@keyframes blinker {
+@keyframes blink {
     50% {
         opacity: 0;
+    }
+}
+
+@media (max-width: 560px) {
+    #game-container {
+        width: min(96vw, calc(94vh * 0.875));
+        border-width: 6px;
+    }
+
+    .score-table {
+        width: min(92%, 300px);
     }
 }
