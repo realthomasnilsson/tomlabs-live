@@ -1,3 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Neon Space Invaders</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main id="game-container" aria-label="Neon Space Invaders arcade cabinet">
+        <canvas id="gameCanvas" width="224" height="256" aria-label="Space Invaders playfield"></canvas>
+        <div id="ui-layer" aria-live="polite">
+            <section id="start-screen" class="overlay active">
+                <h1>SPACE INVADERS</h1>
+                <div class="score-table" aria-label="Invader scoring">
+                    <span><i class="neon saucer"></i> = ?? POINTS</span>
+                    <span><i class="neon squid"></i> = 30 POINTS</span>
+                    <span><i class="neon crab"></i> = 20 POINTS</span>
+                    <span><i class="neon octopus"></i> = 10 POINTS</span>
+                </div>
+                <p>PRESS <span class="blink">SPACE</span></p>
+            </section>
+            <section id="game-over-screen" class="overlay hidden">
+                <h1>GAME OVER</h1>
+                <p>FINAL SCORE <span id="final-score">0000</span></p>
+                <p>PRESS <span class="blink">SPACE</span></p>
+            </section>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
