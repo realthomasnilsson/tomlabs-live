@@ -1,32 +1,65 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Neon Space Invaders</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#020207">
+  <title>Neon Invaders | TomLabs Games</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main id="game-container" aria-label="Neon Space Invaders arcade cabinet">
-        <canvas id="gameCanvas" width="224" height="256" aria-label="Space Invaders playfield"></canvas>
-        <div id="ui-layer" aria-live="polite">
-            <section id="start-screen" class="overlay active">
-                <h1>SPACE INVADERS</h1>
-                <div class="score-table" aria-label="Invader scoring">
-                    <span><i class="neon saucer"></i> = ?? POINTS</span>
-                    <span><i class="neon squid"></i> = 30 POINTS</span>
-                    <span><i class="neon crab"></i> = 20 POINTS</span>
-                    <span><i class="neon octopus"></i> = 10 POINTS</span>
-                </div>
-                <p>PRESS <span class="blink">SPACE</span></p>
-            </section>
-            <section id="game-over-screen" class="overlay hidden">
-                <h1>GAME OVER</h1>
-                <p>FINAL SCORE <span id="final-score">0000</span></p>
-                <p>PRESS <span class="blink">SPACE</span></p>
-            </section>
+  <main class="cabinet">
+    <header class="topbar" aria-label="Game status">
+      <a class="back-button" href="../" aria-label="Back to TomLabs Games" title="Back to games">←</a>
+      <div class="brand"><span>NEON INVADERS</span><small>ARCADE</small></div>
+      <dl class="readout">
+        <div><dt>Score</dt><dd id="score">000000</dd></div>
+        <div><dt>Hi-score</dt><dd id="highScore">000000</dd></div>
+        <div><dt>Wave</dt><dd id="wave">01</dd></div>
+      </dl>
+      <button id="soundButton" class="icon-button" type="button" aria-label="Mute sound" title="Mute sound">
+        <span aria-hidden="true">♪</span>
+      </button>
+    </header>
+
+    <section class="game-frame" aria-label="Neon Invaders arcade game">
+      <canvas id="game" width="960" height="720" aria-label="Game canvas"></canvas>
+      <div class="scanlines" aria-hidden="true"></div>
+
+      <div id="startScreen" class="overlay">
+        <div class="title-lockup">
+          <p class="kicker">TomLabs presents</p>
+          <h1>NEON <span>INVADERS</span></h1>
+          <p class="lede">Hold the last line. Break the formation.</p>
+          <button id="startButton" class="primary-button" type="button">Start mission</button>
         </div>
-    </main>
-    <script src="script.js"></script>
+      </div>
+
+      <div id="messageScreen" class="overlay overlay--hidden">
+        <div class="message-panel">
+          <p id="messageKicker" class="kicker">Signal lost</p>
+          <h2 id="messageTitle">GAME OVER</h2>
+          <p id="messageBody">Final score: 000000</p>
+          <button id="restartButton" class="primary-button" type="button">Run it back</button>
+        </div>
+      </div>
+
+      <div id="pauseScreen" class="pause-banner overlay--hidden">PAUSED</div>
+    </section>
+
+    <footer class="console-strip">
+      <div class="lives" aria-label="Lives remaining"><span>Hull</span><div id="lives"></div></div>
+      <div class="status"><span class="status-light"></span><span id="statusText">System ready</span></div>
+      <button id="pauseButton" class="text-button" type="button">Pause</button>
+    </footer>
+
+    <nav class="touch-controls" aria-label="Touch controls">
+      <button id="leftButton" type="button" aria-label="Move left">◀</button>
+      <button id="fireButton" class="fire-button" type="button" aria-label="Fire">FIRE</button>
+      <button id="rightButton" type="button" aria-label="Move right">▶</button>
+    </nav>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>

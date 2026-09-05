@@ -1,24 +1,23 @@
-# Neon Space Invaders
+# Neon Invaders
 
-A browser-playable Space Invaders remake tuned toward the original 1978 arcade rules and proportions, with neon-colored invaders as the intentional visual twist.
+A fast, neon-styled fixed-shooter built with HTML5 Canvas and plain JavaScript.
 
 ## Play
 
-Open `index.html` in a browser.
+Open `index.html` in a modern browser, or visit [tomlabs.live/neon-invaders](https://tomlabs.live/neon-invaders/).
 
 ## Controls
 
 - Move: Left/Right arrows or A/D
-- Fire/start: Space or Enter
+- Fire: Space
+- Pause: P or Escape
+- Touch devices: on-screen movement and fire controls
 
-## Arcade Details
+## Features
 
-- 224x256 portrait playfield
-- 5 rows by 11 columns of invaders
-- Original-style row values: 30, 20, 20, 10, 10
-- One active player shot at a time
-- Four destructible shields
-- Invader missiles, marching animation, edge drops, and accelerating fleet speed
-- Mystery saucer with variable bonus values
-- Three lives, life-loss pause, next-wave reset, high-score storage
-
+- Increasingly difficult waves of 55 invaders
+- Score, persistent high score, lives, and wave tracking
+- Destructible defense barriers
+- Enemy projectiles and mystery saucers
+- Particle effects, screen shake, and generated arcade audio
+- Responsive keyboard and touch controls
